@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Marketplace</title>
+    <link rel="stylesheet" href="../css/Marketplace.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Farmers Marketplace</h1>
+        <p>Find Farming Equipment & Land</p>
+    </header>
+
+    <div class="filters">
+        <div class="filter-group">
+            <div class="filter-item">
+                <input type="text" placeholder="Search listings..." id="searchInput">
+            </div>
+            <div class="filter-item">
+                <select id="typeFilter">
+                    <option value="">All Types</option>
+                    <option value="equipment">Equipment</option>
+                    <option value="land">Land</option>
+                </select>
+            </div>
+            <div class="filter-item">
+              <select id="stateFilter">
+                  <option value="">Select State</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                  <option value="Ladakh">Ladakh</option>
+                  <option value="Lakshadweep">Lakshadweep</option>
+                  <option value="Puducherry">Puducherry</option>
+              </select>
+          </div>
+            <div class="filter-item">
+                <select id="districtFilter" disabled>
+                    <option value="">Select District</option>
+                </select>
+            </div>
+            <div class="filter-item">
+              <select id="equipmentFilter">
+                <option value="">All Equipment</option>
+                <option value="Tractor">Tractor</option>
+                <option value="Plow">Plow</option>
+                <option value="Combine Harvester">Combine Harvester</option>
+                <option value="Fertilizer Sprayer">Fertilizer Sprayer</option>
+                <option value="Irrigation Pump">Irrigation Pump</option>
+                <option value="Seed Drill Machine">Seed Drill Machine</option>
+                <option value="Rotavator">Rotavator</option>
+                <option value="Sprinkler Irrigation System">Sprinkler Irrigation System</option>
+                <option value="Threshing Machine">Threshing Machine</option>
+                <option value="Chaff Cutter">Chaff Cutter</option>
+                <option value="Hydraulic Trolley">Hydraulic Trolley</option>
+                <option value="Pesticide Sprayer">Pesticide Sprayer</option>
+                <option value="Baler Machine">Baler Machine</option>
+                <option value="Subsoiler">Subsoiler</option>
+                <option value="Power Weeder">Power Weeder</option>
+                <option value="Farmland for Sale">Farmland for Sale</option>
+                <option value="Residential Plot Near Farmland">Residential Plot Near Farmland</option>
+              </select>
+            </div>
+            <div class="filter-item">
+                <input type="date" id="datePostedFilter" placeholder="Date Posted">
+            </div>
+            <div class="filter-item">
+                <select id="priceFilter">
+                    <option value="">Price Range</option>
+                    <option value="0-5000">Under ₹5,000</option>
+                    <option value="5001-20000">₹5,001 - ₹20,000</option>
+                    <option value="20001-100000">₹20,001+</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="marketplace-container">
+        <div class="card-grid">
+            <!-- Cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+
+    <button class="add-item-btn">+</button>
+
+
+
+
+<div id="addListingModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add New Listing</h2>
+        <form id="addListingForm" enctype="multipart/form-data">
+            <!-- Required Fields -->
+            <div class="form-group">
+              <label for="type">Type:</label>
+              <select id="type" name="type" required>
+                <option value="equipment">Equipment</option>
+                <option value="land">Land</option>
+              </select>
+            </div>
+          
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" required>
+            </div>
+          
+            <div class="form-group">
+              <label for="contact">Contact:</label>
+              <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+            </div>
+          
+            <div class="form-group">
+              <label for="price">Price (₹):</label>
+              <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+          
+            <div class="form-group">
+              <label for="state">State:</label>
+              <select id="state" name="state" required>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+              </select>
+          </div>
+          
+            <div class="form-group">
+              <label for="district">District:</label>
+              <select id="district" name="district" required>
+                <option value="">Select District</option>
+              </select>
+            </div>
+          
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <textarea id="description" name="description" required></textarea>
+            </div>
+          
+            <div class="form-group">
+              <label for="image">Image:</label>
+              <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+          
+            <!-- Optional Fields -->
+            <div class="form-group">
+              <label for="equipment_type">Equipment Type:</label>
+              <select id="equipment_type" name="equipment_type">
+                <option value="">Select Equipment</option>
+                <option value="Tractor">Tractor</option>
+                <option value="Plow">Plow</option>
+                <option value="Combine Harvester">Combine Harvester</option>
+                <option value="Fertilizer Sprayer">Fertilizer Sprayer</option>
+                <option value="Irrigation Pump">Irrigation Pump</option>
+                <option value="Seed Drill Machine">Seed Drill Machine</option>
+                <option value="Rotavator">Rotavator</option>
+                <option value="Sprinkler Irrigation System">Sprinkler Irrigation System</option>
+                <option value="Threshing Machine">Threshing Machine</option>
+                <option value="Chaff Cutter">Chaff Cutter</option>
+                <option value="Hydraulic Trolley">Hydraulic Trolley</option>
+                <option value="Pesticide Sprayer">Pesticide Sprayer</option>
+                <option value="Baler Machine">Baler Machine</option>
+                <option value="Subsoiler">Subsoiler</option>
+                <option value="Power Weeder">Power Weeder</option>
+                <option value="Farmland for Sale">Farmland for Sale</option>
+                <option value="Residential Plot Near Farmland">Residential Plot Near Farmland</option>
+              </select>
+            </div>
+          
+            <div class="form-group">
+              <label for="duration">Rental Duration (days):</label>
+              <input type="number" id="duration" name="duration">
+            </div>
+          
+            <div class="form-group">
+              <label for="size">Land Size (acres):</label>
+              <input type="number" id="size" name="size" step="0.1">
+            </div>
+          
+            <button type="submit" class="submit-btn">Add Listing</button>
+          </form>
+    </div>
+</div>
+
+
+
+
+    <script src="../scripts/marketplaceScript.js"></script>
+
+
+
+</body>
+</html>

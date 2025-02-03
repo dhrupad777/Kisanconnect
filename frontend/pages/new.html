@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Selection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFFAE3;
+            color: #4A4A4A;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #FFA500;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .dropdown-button {
+            background-color: #FFD700;
+            border: 2px solid #FFA500;
+            color: #4A4A4A;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            border: 2px solid #FFA500;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #FFDD00;
+        }
+
+        .dropdown-content img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-group">
+        <label for="cropType">Crop Type:</label>
+        <div class="custom-dropdown">
+            <button class="dropdown-button" id="dropdownButton">--Select Crop Type--</button>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="#" data-value="Wheat" data-img="wheat.jpg"><img src="wheat.jpg" alt="Wheat">Wheat</a>
+                <a href="#" data-value="Rice" data-img="rice.jpg"><img src="rice.jpg" alt="Rice">Rice</a>
+                <a href="#" data-value="Barley" data-img="barley.jpg"><img src="barley.jpg" alt="Barley">Barley</a>
+                <a href="#" data-value="Cotton" data-img="cotton.jpg"><img src="cotton.jpg" alt="Cotton">Cotton</a>
+                <a href="#" data-value="Sugarcane" data-img="sugarcane.jpg"><img src="sugarcane.jpg" alt="Sugarcane">Sugarcane</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdownButton.addEventListener('click', function () {
+            dropdownMenu.classList.toggle('show');
+        });
+
+        const options = dropdownMenu.getElementsByTagName('a');
+        Array.from(options).forEach(option => {
+            option.addEventListener('click', function (e) {
+                e.preventDefault();
+                const selectedText = option.innerText;
+                dropdownButton.innerHTML = `${selectedText} <img src="${option.getAttribute('data-img')}" alt="${selectedText}" style="width: 20px; height: 20px; margin-left: 10px;">`;
+                dropdownMenu.classList.remove('show');
+            });
+        });
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropdown-button')) {
+                if (dropdownMenu.classList.contains('show')) {
+                    dropdownMenu.classList.remove('show');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

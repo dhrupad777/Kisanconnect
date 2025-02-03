@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Harvest</title>
+  <link rel="stylesheet" href="../css/NewHarvest.css">
+</head>
+<body>
+  <div class="supercontainer">
+    <div class="farmer-input-section">
+      <div class="container">
+        <h1>New Harvest</h1>
+        <p>Please enter the details of your new harvest.</p>
+        <form id="harvestForm">
+          <div class="form-group">
+            <label for="cropType">Crop Type:</label>
+            <div class="custom-dropdown">
+              <button type="button" class="dropdown-button" id="dropdownButton">--Select Crop Type--</button>
+              <div class="dropdown-content" id="dropdownMenu">
+                <a href="#" data-value="Wheat"><img src="../assets/wheatd.jpg" alt="Wheat">Wheat</a>
+                <a href="#" data-value="Rice"><img src="../assets/riced.webp" alt="Rice">Rice</a>
+                <a href="#" data-value="Barley"><img src="../assets/barleyd.jpg" alt="Barley">Barley</a>
+                <a href="#" data-value="Cotton"><img src="../assets/cottond.jpg" alt="Cotton">Cotton</a>
+                <a href="#" data-value="Jute"><img src="../assets/juteh.jpg" alt="Jute">Jute</a>
+                <a href="#" data-value="Tea"><img src="../assets/tead.jpg" alt="Tea">Tea</a>
+                <a href="#" data-value="Coffee"><img src="../assets/coffeed.jpg" alt="Coffee">Coffee</a>
+                <a href="#" data-value="Sugarcane"><img src="../assets/sugarcaneh.jpg" alt="Sugarcane">Sugarcane</a>
+              </div>
+            </div>
+            <input type="hidden" id="cropType" name="cropType" value="">
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity (in kg):</label>
+            <input type="number" id="quantity" class="input-field" placeholder="Enter quantity" required>
+          </div>
+          <div class="form-group">
+            <label for="state">Select State:</label>
+            <select id="state" class="dropdown" onchange="updateDistricts()" required>
+              <option value="">--Select State--</option>
+              <option value="ANDHRA_PRADESH">Andhra Pradesh</option>
+              <option value="ARUNACHAL_PRADESH">Arunachal Pradesh</option>
+              <option value="ASSAM">Assam</option>
+              <option value="BIHAR">Bihar</option>
+              <option value="CHHATTISGARH">Chhattisgarh</option>
+              <option value="GOA">Goa</option>
+              <option value="GUJARAT">Gujarat</option>
+              <option value="HARYANA">Haryana</option>
+              <option value="HIMACHAL_PRADESH">Himachal Pradesh</option>
+              <option value="JHARKHAND">Jharkhand</option>
+              <option value="KARNATAKA">Karnataka</option>
+              <option value="KERALA">Kerala</option>
+              <option value="MADHYA_PRADESH">Madhya Pradesh</option>
+              <option value="MAHARASHTRA">Maharashtra</option>
+              <option value="MANIPUR">Manipur</option>
+              <option value="MEGHALAYA">Meghalaya</option>
+              <option value="MIZORAM">Mizoram</option>
+              <option value="NAGALAND">Nagaland</option>
+              <option value="ODISHA">Odisha</option>
+              <option value="PUNJAB">Punjab</option>
+              <option value="RAJASTHAN">Rajasthan</option>
+              <option value="SIKKIM">Sikkim</option>
+              <option value="TAMIL_NADU">Tamil Nadu</option>
+              <option value="TELANGANA">Telangana</option>
+              <option value="TRIPURA">Tripura</option>
+              <option value="UTTAR_PRADESH">Uttar Pradesh</option>
+              <option value="UTTARAKHAND">Uttarakhand</option>
+              <option value="WEST_BENGAL">West Bengal</option>
+              <option value="ANDAMAN_AND_NICOBAR_ISLANDS">Andaman and Nicobar Islands</option>
+              <option value="CHANDIGARH">Chandigarh</option>
+              <option value="DADRA_AND_NAGAR_HAVELI_AND_DAMAN_AND_DIU">Dadra and Nagar Haveli and Daman and Diu</option>
+              <option value="DELHI">Delhi</option>
+              <option value="JAMMU_AND_KASHMIR">Jammu and Kashmir</option>
+              <option value="LADAKH">Ladakh</option>
+              <option value="LAKSHADWEEP">Lakshadweep</option>
+              <option value="PUDUCHERRY">Puducherry</option>
+          </select>
+          </div>
+          <div class="form-group">
+            <label for="district">Select District:</label>
+            <select id="district" class="dropdown" required>
+              <option value="">--Select District--</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="landArea">Land Area (in acres):</label>
+            <input type="number" id="landArea" class="input-field" placeholder="Enter land area" required>
+          </div>
+          <div class="form-group">
+            <label for="harvestDate">Harvest Date:</label>
+            <input type="date" id="harvestDate" class="input-field" required>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes/Additional Information:</label>
+            <textarea id="notes" class="input-field" placeholder="Enter any additional notes"></textarea>
+          </div>
+          <div class="form-buttons">
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="reset" class="reset-btn">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="insights-section">
+      <h2>AI Insights</h2>
+      <div class="loader" id="loader" style="display:none;"></div>
+      <div id="outputContainer"></div>
+      <div class="youtube-section">
+        <h2>Recommended Videos</h2>
+        <div id="youtubeVideos" class="youtube-videos"></div>
+      </div>
+    </div>
+  </div>
+  <script src="../scripts/newHarvestScript.js"></script>
+</body>
+</html>

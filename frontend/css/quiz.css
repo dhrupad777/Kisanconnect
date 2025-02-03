@@ -1,0 +1,196 @@
+:root {
+  --primary: #FFA500; /* Orange */
+  --secondary: #FFD700; /* Yellow */
+  --background: #FFF8DC; /* Light yellow */
+  --text: #5A3E36; /* Brownish text */
+  --correct: #32CD32; /* Lime green */
+  --incorrect: #FF4500; /* Orange-red */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#start-button {
+  padding: 12px 18px;
+  margin: 20px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  animation: fadeIn 0.5s ease;
+}
+
+.p {
+  padding: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+#question-box {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+#image-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#question-image {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#options-container {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-button {
+  padding: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.option-button:hover:not(.disabled) {
+  transform: translateX(5px);
+  border-color: var(--primary);
+}
+
+.option-button.correct {
+  background: var(--correct);
+  border-color: var(--correct);
+  color: white;
+}
+
+.option-button.incorrect {
+  background: var(--incorrect);
+  border-color: var(--incorrect);
+  color: white;
+}
+
+.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.result-card {
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.stat-box {
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 130px;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.stat-box.correct {
+  background: var(--correct);
+}
+
+.stat-box.incorrect {
+  background: var(--incorrect);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+  color: white;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.final-score {
+  font-size: 1.6rem;
+  margin: 20px 0;
+  color: var(--primary);
+}
+
+.hidden {
+  display: none;
+}

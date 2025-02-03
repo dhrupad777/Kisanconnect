@@ -1,0 +1,230 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Silos Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff4e6; /* Soft yellow background */
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ff7f00; /* Orange color */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        #map {
+            height: 85vh; /* Make the map occupy most of the screen */
+            width: 100%;
+            border-top: 5px solid #ff7f00; /* Orange border at the top */
+        }
+
+        /* Styling for markers */
+        .leaflet-popup-content {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .leaflet-popup-content b {
+            color: #ff7f00; /* Orange for bold names */
+        }
+
+        /* Customizing popup */
+        .leaflet-popup {
+            background-color: #fff4e6;
+            border: 2px solid #ff7f00;
+        }
+
+        /* Add a simple footer for credits */
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #ff7f00;
+            background-color: #fff4e6;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Storage Silos Locations</h1>
+    <div id="map"></div>
+
+    <!-- Footer for any additional info -->
+    <footer>
+        &copy; 2025 Kisan Connect | All Rights Reserved
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        async function fetchText(params) {
+            let url = 'https://ipinfo.io/json?token=7bb5e8e9ba20d5'
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+
+                // Parse the location string into latitude and longitude
+                const [lat, lng] = data.loc.split(',').map(coord => parseFloat(coord));
+
+                // Add the user's location to the silos array
+                silos.push({
+                    lat: lat,
+                    lng: lng,
+                    name: 'Personal Location',
+                    utilization: `%  YOU ARE HERE  `,
+                    isPersonal: true  // Flag to identify personal location
+                });
+
+                // Reinitialize the map with the updated silos array
+                initMap();
+            } catch (error) {
+                console.error('Error fetching location:', error);
+            }
+        }
+
+        // Array of silo locations (latitude, longitude, name, and utilization)
+        const silos = [
+            { lat: 26.45, lng: 74.64, name: 'Ajmer', utilization: 65.00 },
+            { lat: 26.45, lng: 74.64, name: 'Beawar', utilization: 70.50 },
+            { lat: 26.45, lng: 74.64, name: 'Kishangarh', utilization: 60.75 },
+            { lat: 27.57, lng: 76.62, name: 'Alwar', utilization: 55.25 },
+            { lat: 27.57, lng: 76.62, name: 'Alwar (ALP)', utilization: 75.00 },
+            { lat: 27.57, lng: 76.52, name: 'Khairthal', utilization: 85.50 },
+            { lat: 23.50, lng: 74.40, name: 'Banswara', utilization: 90.00 },
+            { lat: 26.10, lng: 76.00, name: 'Baran-I', utilization: 50.00 },
+            { lat: 26.10, lng: 76.00, name: 'Baran-II', utilization: 55.00 },
+            { lat: 26.10, lng: 76.00, name: 'Chhabra WLL', utilization: 65.00 },
+            { lat: 26.10, lng: 76.00, name: 'Antah', utilization: 70.00 },
+            { lat: 26.10, lng: 76.00, name: 'Atru', utilization: 75.00 },
+            { lat: 26.10, lng: 76.00, name: 'Siswali', utilization: 80.00 },
+            { lat: 27.15, lng: 71.25, name: 'Barmer', utilization: 85.00 },
+            { lat: 27.15, lng: 71.25, name: 'Balotra', utilization: 90.00 },
+            { lat: 27.20, lng: 77.45, name: 'Bharatpur', utilization: 60.00 },
+            { lat: 27.20, lng: 77.45, name: 'Bharatpur-II', utilization: 65.00 },
+            { lat: 27.00, lng: 77.20, name: 'Bayana', utilization: 70.00 },
+            { lat: 27.10, lng: 77.60, name: 'Nadbai', utilization: 75.00 },
+            { lat: 25.35, lng: 74.60, name: 'Bhilwara', utilization: 80.00 },
+            { lat: 25.35, lng: 74.60, name: 'Gulabpura', utilization: 85.00 },
+            { lat: 25.35, lng: 74.60, name: 'Mandalgarh', utilization: 90.00 },
+            { lat: 28.00, lng: 73.30, name: 'Bikaner (ALP)', utilization: 50.00 },
+            { lat: 28.00, lng: 73.30, name: 'Khajuwala', utilization: 55.00 },
+            { lat: 28.00, lng: 73.30, name: 'Kolayat', utilization: 60.00 },
+            { lat: 28.00, lng: 73.30, name: 'Loonkaransar', utilization: 65.00 },
+            { lat: 28.00, lng: 73.30, name: 'Nokha', utilization: 70.00 },
+            { lat: 25.42, lng: 75.55, name: 'Bundi', utilization: 75.00 },
+            { lat: 25.42, lng: 75.55, name: 'Bundi-II', utilization: 80.00 },
+            { lat: 25.42, lng: 75.55, name: 'Kapren', utilization: 85.00 },
+            { lat: 25.42, lng: 75.55, name: 'Keshoraipatan', utilization: 90.00 },
+            { lat: 24.88, lng: 74.63, name: 'Chittorgarh-I', utilization: 50.00 },
+            { lat: 24.88, lng: 74.63, name: 'Chittorgarh-II', utilization: 55.00 },
+            { lat: 24.88, lng: 74.63, name: 'Nimbahera', utilization: 60.00 },
+            { lat: 27.00, lng: 75.80, name: 'Dausa', utilization: 65.00 },
+            { lat: 27.00, lng: 75.80, name: 'Bandikui', utilization: 70.00 },
+            { lat: 27.00, lng: 75.80, name: 'Lalsot', utilization: 75.00 },
+            { lat: 27.00, lng: 75.80, name: 'M.M.Road', utilization: 80.00 },
+            { lat: 26.50, lng: 77.20, name: 'Dholpur', utilization: 85.00 },
+            { lat: 23.50, lng: 74.40, name: 'Dungarpur', utilization: 90.00 },
+            { lat: 29.50, lng: 74.20, name: 'Hanumangarh (ALP)', utilization: 50.00 },
+            { lat: 24.60, lng: 74.90, name: 'Bhadra', utilization: 55.00 },
+            { lat: 27.00, lng: 76.00, name: 'Dablirathan', utilization: 60.00 },
+            { lat: 28.00, lng: 73.00, name: 'Goluwala', utilization: 65.00 },
+            { lat: 29.10, lng: 74.00, name: 'Nohar', utilization: 70.00 },
+            { lat: 29.00, lng: 74.50, name: 'Pilibangan', utilization: 75.00 },
+            { lat: 29.50, lng: 74.50, name: 'Rawatsar', utilization: 80.00 },
+            { lat: 29.00, lng: 74.00, name: 'Sangaria', utilization: 85.00 },
+            { lat: 26.90, lng: 75.80, name: 'Jaipur (BG)', utilization: 90.00 },
+            { lat: 27.00, lng: 75.50, name: 'Chomu', utilization: 50.00 },
+            { lat: 27.20, lng: 75.50, name: 'Naraina', utilization: 55.00 },
+            { lat: 26.90, lng: 70.90, name: 'Jaisalmer', utilization: 60.00 },
+            { lat: 25.50, lng: 71.50, name: 'Mohangarh', utilization: 65.00 },
+            { lat: 25.30, lng: 72.50, name: 'Jalore', utilization: 70.00 },
+            { lat: 24.50, lng: 72.50, name: 'Bhinmal', utilization: 75.00 },
+            { lat: 24.50, lng: 72.00, name: 'Sanchore', utilization: 80.00 },
+            { lat: 25.00, lng: 76.00, name: 'Bhawanimandi', utilization: 85.00 },
+            { lat: 25.00, lng: 76.50, name: 'Jhalrapatan', utilization: 90.00 },
+            { lat: 26.00, lng: 75.00, name: 'Khanpur', utilization: 50.00 },
+            { lat: 26.30, lng: 73.00, name: 'Jodhpur-Mandore', utilization: 55.00 },
+            { lat: 26.30, lng: 73.00, name: 'Jodhpur-Basni', utilization: 60.00 },
+            { lat: 26.50, lng: 73.50, name: 'Bilara', utilization: 65.00 },
+            { lat: 27.00, lng: 71.50, name: 'Phalodi', utilization: 70.00 },
+            { lat: 26.50, lng: 77.50, name: 'Karauli WLL', utilization: 75.00 },
+            { lat: 26.50, lng: 77.00, name: 'Hindauncity WLL', utilization: 80.00 },
+            { lat: 25.10, lng: 75.80, name: 'Kota (ALP)', utilization: 85.00 },
+            { lat: 25.20, lng: 75.80, name: 'Itawa', utilization: 90.00 },
+            { lat: 25.00, lng: 76.00, name: 'Ramganjmandi', utilization: 50.00 },
+            { lat: 26.50, lng: 74.50, name: 'Sultanpur', utilization: 55.00 },
+            { lat: 27.00, lng: 73.50, name: 'Nagaur', utilization: 60.00 },
+            { lat: 26.50, lng: 74.50, name: 'Mertacity', utilization: 65.00 },
+            { lat: 26.50, lng: 74.50, name: 'Mertacity (ALP)', utilization: 70.00 },
+            { lat: 26.50, lng: 74.50, name: 'Kuchamancity', utilization: 75.00 },
+            { lat: 27.00, lng: 74.50, name: 'Ladnun', utilization: 80.00 },
+            { lat: 25.50, lng: 73.50, name: 'Pali', utilization: 85.00 },
+            { lat: 25.50, lng: 73.50, name: 'Sojat Road', utilization: 90.00 },
+            { lat: 25.00, lng: 74.00, name: 'Sumerpur', utilization: 50.00 },
+            { lat: 25.00, lng: 74.50, name: 'Bisalpur godown', utilization: 55.00 },
+            { lat: 25.50, lng: 74.50, name: 'Pratapgarh', utilization: 60.00 },
+            { lat: 25.50, lng: 74.00, name: 'Rajsamand', utilization: 65.00 },
+            { lat: 26.50, lng: 76.00, name: 'Sawaimadhopur', utilization: 70.00 },
+            { lat: 26.50, lng: 76.00, name: 'Gangapurcity', utilization: 75.00 },
+            { lat: 26.50, lng: 76.00, name: 'Gangapurcity-II', utilization: 80.00 },
+            { lat: 27.00, lng: 75.00, name: 'Neem-ka-Thana', utilization: 85.00 },
+            { lat: 24.50, lng: 72.50, name: 'Abu Road', utilization: 90.00 }
+            // Add more silos as required
+        ];
+
+        // Function to initialize the map
+        function initMap() {
+            // Center the map on Rajasthan, India
+            const map = L.map('map').setView([26.9124, 75.7873], 7);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Create custom icons
+            const personalIcon = L.icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+
+            // Add markers for each silo
+            silos.forEach(silo => {
+                const markerOptions = silo.isPersonal ? { icon: personalIcon } : {};
+                L.marker([silo.lat, silo.lng], markerOptions)
+                    .addTo(map)
+                    .bindPopup(`<b>${silo.name}</b><br>Utilization: ${silo.utilization}%`);
+            });
+        }
+
+        // First fetch the location, then initialize the map
+        fetchText();
+    </script>
+</body>
+
+</html>

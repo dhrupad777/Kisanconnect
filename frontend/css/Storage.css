@@ -1,0 +1,250 @@
+/* General styles for the body and container */
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding and borders in width calculations */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8e1; /* Light yellow background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+h1 {
+    font-size: 2rem; /* Responsive font size */
+    color: #ff5722; /* Bright orange */
+    margin-bottom: 20px;
+}
+
+.dropdown-container {
+    margin: 15px 0; /* Reduced margin for smaller screens */
+    text-align: left;
+}
+
+label {
+    font-size: 1rem; /* Responsive font size */
+    color: #333;
+    margin-right: 10px;
+}
+
+.dropdown {
+    padding: 10px;
+    font-size: 1rem; /* Responsive font size */
+    width: 100%;
+    max-width: 100%; /* Full width on small screens */
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.dropdown option {
+    padding: 10px;
+}
+
+/* Hover and focus styles for the dropdown */
+.dropdown:hover, .dropdown:focus {
+    border-color: #ff5722;
+}
+
+/* Styling for the button container */
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Styling for the search button */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; /* Responsive font size */
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Map Button (Fixed at Bottom Right) */
+.map-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Results Container for Cards */
+.results-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    width: 100%;
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width on small screens */
+    max-width: 300px; /* Limit width on larger screens */
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Prevent content from overflowing */
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-size: 1.5rem; /* Responsive font size */
+    color: #ff5722; /* Orange for headings */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ffcc80; /* Light yellow border */
+    padding-bottom: 5px;
+}
+
+.card p {
+    font-size: 1rem; /* Responsive font size */
+    color: #666;
+    margin: 5px 0;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+}
+
+.card .label {
+    font-weight: bold;
+    color: #ff9800; /* Orange for labels */
+}
+
+/* Email Styling */
+.card .email {
+    font-size: 0.875rem; /* Responsive font size */
+    text-transform: lowercase; /* Convert to lowercase */
+    color: #1e88e5; /* Blue color for clickable link */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.card .email:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.card .phone:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .dropdown-container, label, .dropdown, button {
+        font-size: 0.875rem;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
+
+.fixed-map-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.fixed-map-btn button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    padding: 5px;
+}
+
+.fixed-map-btn button:hover {
+    transform: scale(1.5);
+    background-color: #f4511e;
+}
+
+.fixed-map-btn button i {
+    font-size: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fixed-map-btn {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .fixed-map-btn button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .fixed-map-btn button i {
+        font-size: 18px;
+    }
+}

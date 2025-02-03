@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farming Quiz</title>
+  <link rel="stylesheet" href="../css/quiz.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌾 Farming Practices Quiz</h1>
+    </header>
+    <main>
+      <div id="start-screen">
+        <div class="card">
+          <h3>Test your farming knowledge with our interactive quiz!</h3>
+          <button id="start-button" class="btn">Start Quiz</button>
+          <!-- Go to Homepage button -->
+          <button id="home-button-start" class="btn">Go to Homepage</button>
+        </div>
+      </div>
+
+      <div id="quiz-screen" class="hidden">
+        <div class="card">
+          <div class="quiz-header">
+            <div class="progress">Question <span id="current-q">1</span>/10</div>
+            <div class="score">Score: <span id="current-score">0</span></div>
+          </div>
+          <h2 id="question-box"></h2>
+          <div id="image-container" class="hidden">
+            <img id="question-image" src="" alt="Crop Health Image" />
+          </div>
+          <div id="options-container"></div>
+          <button id="next-button" class="btn hidden">Next Question →</button>
+        </div>
+      </div>
+
+      <div id="result-screen" class="hidden">
+        <div class="card result-card">
+          <h2>📊 Quiz Results</h2>
+          <div class="stats">
+            <div class="stat-box correct">
+              <span class="stat-value" id="correct-answers">0</span>
+              <span class="stat-label">Correct</span>
+            </div>
+            <div class="stat-box incorrect">
+              <span class="stat-value" id="incorrect-answers">0</span>
+              <span class="stat-label">Incorrect</span>
+            </div>
+          </div>
+          <p class="final-score">Final Score: <span id="final-score">0</span>/10</p>
+          <button id="retake-button" class="btn">🔄 Retake Quiz</button>
+          <!-- Go to Homepage button -->
+          <button id="home-button-result" class="btn">Go to Homepage</button>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../scripts/quiz.js"></script>
+</body>
+</html>

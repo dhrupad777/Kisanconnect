@@ -1,0 +1,364 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffedd5; /* Light yellow background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-color: #f59e0b; /* Orange */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Heading */
+h2 {
+    text-align: center;
+    color: #eab308; /* Bright Yellow */
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Trades Section */
+section {
+    padding: 20px;
+}
+
+.contracts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensures consistent card size */
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Card Styles */
+.card {
+    background: #fff7ed; /* Light orange background */
+    border: 2px solid #fbbf24; /* Golden Yellow Border */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 320px; /* Consistent height for all cards */
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header with Logo */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-header img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.card-header .badge {
+    background-color: #f59e0b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Card Content */
+.card h3 {
+    color: #d97706; /* Dark Orange */
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    margin: 5px 0;
+}
+
+/* Form Section */
+.card form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card form input,
+.card form label {
+    font-size: 1rem;
+}
+
+.card form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #d97706;
+    border-radius: 5px;
+}
+
+.card form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.card form button {
+    background-color: #d97706;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card form button:hover {
+    background-color: #b45309; /* Darker Orange */
+}
+.email-link {
+    display: inline-block;
+    max-width: 200px;  /* Adjust width if needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: blue;
+}
+
+.email-link:hover {
+    overflow: visible;
+    white-space: normal;
+    background-color: #f1f1f1;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.phone-link {
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+.notification-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+.notification-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 10px;
+}
+
+.trade-status {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.trade-status.active { background: #d4edda; }
+.trade-status.completed { background: #f8d7da; }
+
+/* Notifications */
+.notification-badge {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .notification-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Status Indicators */
+  .trade-status {
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .status-open { background: #d1e8ff; color: #004085; }
+  .status-pending { background: #fff3cd; color: #856404; }
+  .status-active { background: #d4edda; color: #155724; }
+  .status-completed { background: #f8d7da; color: #721c24; }
+  
+  /* Buttons */
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  .btn-primary {
+    background: #218838;
+    color: white;
+  }
+  
+  .btn-danger {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+
+
+/* Improved Responsive Styles */
+.contracts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 10px;
+}
+
+.card {
+    min-height: 300px;
+    height: auto;
+    padding: 15px;
+    margin: 10px;
+}
+
+/* Header Responsiveness */
+.header {
+    padding: 15px;
+}
+
+.header h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+}
+
+/* Responsive Text Sizing */
+h2 {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+}
+
+.card h3 {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+}
+
+/* Form Elements */
+.card form input,
+.card form label {
+    font-size: 0.9rem;
+}
+
+/* Notification System */
+.notification-badge {
+    top: 5px;
+    right: 5px;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+}
+
+/* Mobile-First Adjustments */
+@media (max-width: 768px) {
+    .contracts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .card {
+        height: auto;
+        min-height: 280px;
+        padding: 12px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contracts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-header img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .card-header .badge {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+    
+    .email-link {
+        max-width: 150px;
+    }
+    
+    .trade-status {
+        font-size: 0.9rem;
+    }
+    
+    section {
+        padding: 10px;
+    }
+}
+
+/* Touch Optimization */
+@media (hover: none) {
+    .card:hover {
+        transform: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .email-link:hover {
+        overflow: hidden;
+        white-space: nowrap;
+        background-color: transparent;
+    }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    .card {
+        min-height: 250px;
+    }
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Signup - Farmer's App</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFB75E 0%, #ED8F03 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            width: 400px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        .logo {
+            width: 320px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #FF8C00;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #FFA500;
+            border-radius: 2px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-weight: 500;
+            font-size: 0.9em;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #FFE4B5;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        input:focus {
+            border-color: #FFA500;
+            box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.1);
+            outline: none;
+        }
+
+        input:focus+label {
+            color: #FF8C00;
+            transform: translateY(-2px);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #FF8C00 0%, #FF7F00 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .switch-button {
+            margin-top: 25px;
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+        }
+
+        .switch-button a {
+            color: #FF8C00;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .switch-button a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #FFA500;
+            transition: width 0.3s ease;
+        }
+
+        .switch-button a:hover::after {
+            width: 100%;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        .error-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -10px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: loading 0.8s linear infinite;
+        }
+
+        /* Success state */
+        button.success {
+            background: #FFD700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="logo-container">
+            <img src="../assets/logo-removebg.png" alt="Agricultural land" class="logo">
+        </div>
+        <h2 id="login-heading">Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="emailInput" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="passwordInput" name="password" required>
+            </div>
+
+            <div class="input-group">
+                <label for="userType">I am a:</label>
+                <select id="userType" name="userType" required>
+                    <option value="farmer">Farmer</option>
+                    <option value="business">Business Owner/Enterprise</option>
+                </select>
+            </div>
+
+            <button type="submit" id="loginButton">Login</button>
+        </form>
+
+        <div class="switch-button">
+            Don't have an account? <a href="signup.html">Signup here</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNExRx8hnROxd9Kni8_Hjs0MQ1yk2Q4B4",
+            authDomain: "kisanconnect-34239.firebaseapp.com",
+            projectId: "kisanconnect-34239",
+            storageBucket: "kisanconnect-34239.appspot.com",
+            messagingSenderId: "925504804888",
+            appId: "1:925504804888:web:347164490ab480dee10b6d"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginForm = document.getElementById('loginForm');
+        const loginButton = document.getElementById('loginButton');
+
+        loginForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            loginButton.classList.add('loading');
+            loginButton.disabled = true;
+
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            const userType = document.getElementById('userType').value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                loginButton.classList.remove('loading');
+                loginButton.classList.add('success');
+                loginButton.textContent = 'Logged In!';
+
+                setTimeout(() => {
+                    if (userType === "farmer") {
+                        window.location.href = "mainScript.html";
+                    } else {
+                        window.location.href = "mainScript2.html";
+                    }
+                }, 1500);
+
+            } catch (error) {
+                loginButton.classList.remove('loading');
+                loginButton.disabled = false;
+                alert("Login failed. Please check your credentials.");
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Trade Portal</title>
+    <link rel="stylesheet" href="..//css/DirectTrade2.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Direct Trade Portal</h1>
+    </header>
+
+
+    <!-- Market Trades Section -->
+    <section class="market-trades-section">
+        <h2>Market Trades</h2>
+        <div class="contracts-grid">
+            <!-- Dynamically populated market trades -->
+        </div>
+    </section>
+
+    <!-- Add New Trade Button -->
+    <button id="addTradeButton" class="add-button">Add New Trade</button>
+
+    <!-- Modal Popup Form -->
+    <div id="tradeModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Add New Trade</h2>
+            <form id="tradeForm">
+                <label for="tradeType">Trade Type </label>
+                <select id="tradeType" required>
+                    <option value="" disabled selected>Select Trade Type</option>
+                    <option value="domestic">Domestic</option>
+                    <option value="international">International</option>
+                </select>
+
+                <label for="name">Trade Name</label>
+                <input type="text" id="name" required>
+
+                <label for="needs">Needs(Produce in Kg)</label>
+                <input type="text" id="needs" required>
+
+                <label for="deadline">Deadline</label>
+                <input type="date" id="deadline" required>
+
+                <label for="price">Price(INR)</label>
+                <input type="number" id="price" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" required>
+
+                <!-- Add New Trade Button -->
+                <button id="addTradeButton" class="add-button">
+                    + Post Tender
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Include the JavaScript as a module -->
+    <script type="module" src="..//scripts/directTradeScript.js"></script>
+</body>
+
+</html>

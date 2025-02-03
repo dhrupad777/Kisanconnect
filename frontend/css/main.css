@@ -1,0 +1,296 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff5e6;
+    color: #333;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo styling */
+.logo-container {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    width: 250px; /* Adjust as needed */
+}
+
+.user {
+    width: 150px; /* Adjust as needed */
+    height: 150px;
+}
+
+/* Header styling */
+header {
+    background-color: #ff6600;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+}
+
+header h1 {
+    font-size: 5rem; /* Adjust as needed */
+    margin: 0px;
+    flex: 1;
+    text-align: center;
+}
+
+.header-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Ensure the anchor tag is displayed as a block */
+.logo-container a {
+    display: block; /* Makes the anchor fill the container */
+    width: 100%;    /* Ensures the link covers the full width */
+    height: 100%;   /* Ensures the link covers the full height of the logo container */
+}
+
+/* Optional: Add a pointer cursor to show it's clickable */
+.logo-container a:hover {
+    cursor: pointer;
+}
+
+
+.header-icons a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.header-icons a:hover {
+    color: #e65c00;
+}
+
+/* Main container */
+main {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Subsection container */
+.subsection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* Card styling */
+.card {
+    background-color: #ffd699;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    height: 400px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    color: #ff8000;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    background-color: #ff6600;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e65c00;
+}
+
+/* Image container styling */
+.image1 {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.image1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Fixed Quiz Button */
+.quiz-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 30px;
+    background-color: #ff6600;
+    color: white;
+    padding: 20px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.quiz-btn:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .user {
+        width: 45px;
+        height: 45px;
+    }
+
+    .header-icons {
+        gap: 12px;
+    }
+
+    .header-icons a {
+        font-size: 1.1rem;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .subsection {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quiz-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .user {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .subsection {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quiz-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .header-icons {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    .logo {
+        width: 80px;
+    }
+
+    .user {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+    }
+
+    .card p {
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .quiz-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}

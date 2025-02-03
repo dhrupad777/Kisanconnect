@@ -1,0 +1,365 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffedd5; /* Light yellow background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-color: #f59e0b; /* Orange */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Heading */
+h2 {
+    text-align: center;
+    color: #eab308; /* Bright Yellow */
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Trades Section */
+section {
+    padding: 20px;
+}
+
+.contracts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensures consistent card size */
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Card Styles */
+.card {
+    background: #fff7ed; /* Light orange background */
+    border: 2px solid #fbbf24; /* Golden Yellow Border */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 320px; /* Consistent height for all cards */
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header with Logo */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-header img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.card-header .badge {
+    background-color: #f59e0b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Card Content */
+.card h3 {
+    color: #d97706; /* Dark Orange */
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    margin: 5px 0;
+}
+
+/* Form Section */
+.card form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card form input,
+.card form label {
+    font-size: 1rem;
+}
+
+.card form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #d97706;
+    border-radius: 5px;
+}
+
+.card form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.card form button {
+    background-color: #d97706;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card form button:hover {
+    background-color: #b45309; /* Darker Orange */
+}
+.email-link {
+    display: inline-block;
+    max-width: 200px;  /* Adjust width if needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: blue;
+}
+
+.email-link:hover {
+    overflow: visible;
+    white-space: normal;
+    background-color: #f1f1f1;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.phone-link {
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+/* Floating Add Button */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.floating-btn:hover {
+    background-color: #218838;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    width: 30%;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+}
+/* Add button for adding new trade */
+/* Circular Add Button */
+.add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;  /* Set width */
+    height: 80px; /* Set height to make it a perfect circle */
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Ensures circular shape */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-wrap: wrap;
+    padding: 10px;
+}
+
+/* Hover effect */
+.add-button:hover {
+    background-color: #FF7F00;
+}
+
+.add-button:hover {
+    background-color: #FF7F00;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal button {
+    padding: 10px 20px;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: #FF7F00;
+}
+.notification-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+.notification-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 10px;
+}
+
+.trade-status {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.trade-status.active { background: #d4edda; }
+.trade-status.completed { background: #f8d7da; }
+
+
+/* Trade Type Label and Input */
+#tradeType {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Hint for Trade Type */
+#tradeType::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+#tradeType:focus::placeholder {
+    color: transparent; /* Hide placeholder when the input is focused */
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    padding: 10px;
+    width: 100%;
+}
+
+.form-group input#tradeType {
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.form-group input#tradeType::placeholder {
+    content: "Domestic or International";
+    color: #aaa;
+}

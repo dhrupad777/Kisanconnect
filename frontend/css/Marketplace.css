@@ -1,0 +1,415 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fff9e6;
+}
+
+/* Header Styles */
+.header {
+    background-color: #ff9800;
+    color: white;
+    padding: 1.2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 1.4rem; /* Increased font size for better readability */
+}
+
+/* Filters Section */
+.filters {
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+/* Filter Group */
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Input and Select Styles */
+select, input {
+    width: 100%;
+    padding: 0.8rem; /* Increased padding for ease of use */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Card Grid */
+.marketplace-container {
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* Card Design */
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid #ff9800;
+}
+
+.card-content {
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.card-type {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.equipment { background: #fff3e0; color: #ff9800; }
+.land { background: #e8f5e9; color: #4caf50; }
+
+.card-title {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.card-price {
+    color: #ff9800;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-details {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.card-details span {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.card-details i {
+    margin-right: 0.5rem;
+    color: #888;
+}
+
+.contact-btn {
+    display: block;
+    text-align: center;
+    background-color: #ff9800;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #ff8f00;
+}
+
+/* Add Item Button */
+.add-item-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: #ff9800;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 1024px) {
+    .filters {
+        width: 95%;
+        margin: auto;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .add-item-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+
+    /* Adjust filter layout for smaller devices */
+    .filter-group {
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    /* Adjust padding on the filters section */
+    .filters {
+        padding: 0.8rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-price {
+        font-size: 1.1rem;
+    }
+
+    /* Adjust Add Item button size */
+    .add-item-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+
+    .filters {
+        padding: 0.8rem;
+    }
+
+    .card {
+        padding: 0.5rem;
+    }
+
+    .contact-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    .add-item-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    /* Make buttons more prominent on small screens */
+    .contact-btn {
+        padding: 0.8rem;
+    }
+
+    .card-price {
+        font-size: 1rem;
+    }
+
+    .card-details {
+        font-size: 0.85rem;
+    }
+}
+
+/* General Improvements for Tablets and Smaller Devices */
+@media (max-width: 600px) {
+    .header {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+
+    .filters {
+        padding: 1rem;
+    }
+
+    .card-content {
+        padding: 0.8rem;
+    }
+
+    .card-price {
+        font-size: 1rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-details {
+        font-size: 0.8rem;
+    }
+}
+
+/* Modal background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fff8e1; /* Soft yellow */
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 80vh; /* Limits modal height to 80% of the viewport */
+    overflow-y: auto; /* Adds scroll if content overflows */
+    position: relative;
+}
+
+/* Close button */
+.close {
+    color: #ff7043; /* Orange color */
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Close button hover effect */
+.close:hover,
+.close:focus {
+    color: #d32f2f; /* Darker red-orange on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Heading style */
+h2 {
+    color: #f57c00; /* Orange */
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form group (each label + input) */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+label {
+    font-size: 14px;
+    color: #ff7043; /* Orange color */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Input styling */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ff7043; /* Orange border */
+    font-size: 14px;
+}
+
+/* Textarea styling */
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Button styling */
+.submit-btn {
+    background-color: #f57c00; /* Orange button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+}
+
+/* Button hover effect */
+.submit-btn:hover {
+    background-color: #e65100; /* Darker orange on hover */
+}
+
+/* Optional fields section title */
+.optional-title {
+    color: #f57c00;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Adjusting form-group spacing in optional fields */
+.optional .form-group {
+    margin-bottom: 10px;
+}
+
